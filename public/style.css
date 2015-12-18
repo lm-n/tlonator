@@ -1,0 +1,90 @@
+html{
+	font-family: Arial;
+	font-size: 14px;
+}
+
+a:link    {color:white; background-color:transparent; text-decoration:none}
+a:visited {color:white; background-color:transparent; text-decoration:none}
+a:hover   {color:white; background-color:transparent; text-decoration:underline}
+a:active  {color:white; background-color:transparent; text-decoration:underline}
+
+#docu{
+    text-align: center;
+    position: fixed;
+    z-index: 9999;
+    margin: 10px 10px 40px;
+}
+
+#outer{
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    z-index: 9999;
+    margin: 130px 1px 40px;
+}
+
+	.inner{
+	    display: inline-block;
+	}
+
+		#geography{
+		  	border-radius: 1px;
+		  	border-style: solid;
+		  	border-color: #ffffff;
+		  	font-family: Arial;
+		  	color: #4d4d4d;
+		  	font-size: 21px;
+		  	background: #ffffff;
+		  	padding: 10px 20px 10px 20px;
+		  	text-decoration: none;
+		}
+
+		#language{
+		  	border-radius: 1px;
+		  	border-style: solid;
+		  	border-color: #ffffff;
+		  	font-family: Arial;
+		  	color: #4d4d4d;
+		  	font-size: 21px;
+		  	background: #ffffff;
+		  	padding: 10px 20px 10px 20px;
+		  	text-decoration: none;
+		}
+
+		#history{
+		  	border-radius: 1px;
+		  	border-color: #ffffff;
+		  	border-style: solid;
+		  	font-family: Arial;
+		  	color: #4d4d4d;
+		  	font-size: 21px;
+		  	background: #ffffff;
+		  	padding: 10px 20px 10px 20px;
+		  	text-decoration: none;
+		}
+
+		#geography:hover {
+  			background: #b3b3b3;
+  			text-decoration: none;
+		}
+
+		#language:hover {
+  			background: #b3b3b3;
+  			text-decoration: none;
+		}
+
+		#history:hover {
+  			background: #b3b3b3;
+  			text-decoration: none;
+		}
+
+#page-title{
+	font-size: 8em;
+    text-align: center;
+    margin: 10px 1px 40px;
+    color: white;
+    font-family: Arial;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
