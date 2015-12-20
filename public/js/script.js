@@ -3,7 +3,7 @@ var apiTermResponses = [];
 var finaltextIsReady = false;
 var loadtext = false;
 var thetlontextcat;
-var randomnumber; 
+var randomnumber;
 var thetlontext = "Their language and those things derived from their language—religion, literature, metaphysics—presuppose idealism. For the people of Tlön,the world is not an amalgam of objects in space; it is a heterogeneous series of independent acts the world is successive, temporal, but not spatial. There are no nouns in the conjectural Ursprache of Tlön,from which its present-day languages and dialects derive: there are impersonal verbs, modified by mono-syllabic suffixes (or prefixes) functioning as adverbs.";
 var theDT;
 var finaltext = "Click on the buttons to see examples of Tlönized English and learn more about the world of Tlön";
@@ -23,13 +23,17 @@ function replacef(apiTermResponses){
 
 function getAPIDic(term, orderVal){
 	$.ajax({
-		url: "http://cors.io/?u=http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + term + "?key=21960e29-e95e-456c-af22-7ff4c8b2fedb",
+		//url: "http://cors.io/?u=http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + term + "?key=21960e29-e95e-456c-af22-7ff4c8b2fedb",
+		url: '/dict/' + term,
 		type: 'GET',
-		dataType: 'xml',
+		dataType: 'json',
 		error: function(data){
 				alert("Oh No! Try a refresh?");
 			},
 		success: function(data){
+			console.log(data);
+			data = $.parseXML(data.theXML);
+			console.log(data);
 			if (data.getElementsByTagName('dt')[0]){
 				theDT = data.getElementsByTagName('dt')[0].textContent;
 			}

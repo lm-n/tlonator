@@ -28,7 +28,7 @@ function draw() {
   endShape(CLOSE);
 
 
-  //Text Logic
+  //Text
     textFont("Helvetica");
     textSize(15);
     fill(0);
@@ -43,7 +43,6 @@ function draw() {
     textSize(20);
     fill(0);
     text('Tlönized English:', 700, 300, 500, 350);
-
 
 }
 
