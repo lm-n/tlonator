@@ -15,9 +15,9 @@ function replacef(apiTermResponses){
 		var curBecome = apiTermResponses[i][1];
 		finaltext = finaltext.replace(curToBeRepl, curBecome);
 	}
-	console.log('textreplaced');
+	//console.log('textreplaced');
 	finaltext = finaltext.replace(/\s\s/g,' ');
-	console.log(finaltext);
+	//console.log(finaltext);
 	finaltextIsReady = true;
 }
 
@@ -31,9 +31,9 @@ function getAPIDic(term, orderVal){
 				alert("Oh No! Try a refresh?");
 			},
 		success: function(data){
-			console.log(data);
+			//console.log(data);
 			data = $.parseXML(data.theXML);
-			console.log(data);
+			//console.log(data);
 			if (data.getElementsByTagName('dt')[0]){
 				theDT = data.getElementsByTagName('dt')[0].textContent;
 			}
@@ -67,7 +67,7 @@ function getAPIDic(term, orderVal){
 			}
 
 			else{
-				console.log("Not yet...");
+				//console.log("Not yet...");
 			}
 		}
 	});
@@ -79,7 +79,7 @@ function nalapo(thetlontext){
 		theNounArray.forEach(function(item){
 		theTextArray.push(item.text);
 	});
-	console.log(theTextArray);
+	//console.log(theTextArray);
 	loadtext = true;
 	numRequests = theTextArray.length;
 	//console.log('allhere');
@@ -118,21 +118,21 @@ function pressfunc(){
 	var btrn = document.getElementById("language");
 
 	btn.onclick = function () {
-		console.log('Hi, loading geography');
+		//console.log('Hi, loading geography');
 		resetGlobals();
 		key = 'geography';
 		getAPItexts(key);
 	};
 
 	btwn.onclick = function () {
-		console.log('Hi, loading history');
+		//console.log('Hi, loading history');
 		resetGlobals();
 		key = 'history';
 		getAPItexts(key);
 	};
 
 	btrn.onclick = function () {
-		console.log('Hi, loading language');
+		//console.log('Hi, loading language');
 		resetGlobals();
 		key = 'language';
 		getAPItexts(key);
