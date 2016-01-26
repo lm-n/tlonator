@@ -27,7 +27,7 @@ function replacef(termAndDef){
 	finaltext = finaltext.replace(/\s\s/g,' ');
 	finaltextIsReady = true;
 
-	console.log(finaltext);
+	//console.log(finaltext);
 }
 
 function textprocess(term){
@@ -79,7 +79,7 @@ function textprocess(term){
 			termAndDef.push([term, noundefinition]);
 
 			if (termAndDef.length == numRequests){
-				console.log(termAndDef);
+				//console.log(termAndDef);
 				replacef(termAndDef);
 			}
 		}
