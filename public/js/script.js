@@ -16,6 +16,26 @@ var defs = [];
 var newTextArrays = [];
 var termAndDef = [];
 var nouns = [];
+var thetlontextor = "";
+
+function saveRecord(postEntry){
+		postEntry.namespace = window.key;
+	console.log("Trying to Post");
+	$.ajax({
+		url: "/save",
+		contentType: "application/json",
+		type: "POST",
+		data: JSON.stringify(postEntry),
+		error: function (resp) {
+			console.log(resp);
+			document.getElementById("demo").innerHTML = 'errr';
+		},
+		success: function (resp) {
+			console.log(resp);
+			document.getElementById("demo").innerHTML = finaltext;
+		}
+	});
+}
 
 function replacef(termAndDef){
 	finaltext = thetlontext;
@@ -24,10 +44,17 @@ function replacef(termAndDef){
 		var def = termAndDef[i][1];
 		finaltext = finaltext.replace(noun, def);
 	}
-	finaltext = finaltext.replace(/\s\s/g,' ');
-	finaltextIsReady = true;
 
-	//console.log(finaltext);
+	finaltext = finaltext.replace(/\s\s/g,' ');
+	var postEntry = {
+			textor: $(thetlontextor),
+			tlonated: $(finaltext),
+			created_at: new Date()
+		};
+	//saveRecord(postEntry);
+	document.getElementById("demo").innerHTML = finaltext;
+	finaltextIsReady = true;
+	console.log(finaltext);
 }
 
 function textprocess(term){
@@ -86,67 +113,47 @@ function textprocess(term){
 	});
 }
 
-function getAPItexts(key){
-	$.ajax({
-		url: "/api/"+window.key,
-		type: "GET",
-		data: JSON,
-		
-		error: function(resp){
-		},
-		
-		success: function (resp) {
-			thetlontext = resp[randomnumber].doc.text;
-			thetlontextcat = resp[randomnumber].doc.namespace;
-			ritatestPOS = RiTa.getPosTags(thetlontext); //analize each sentence and indicate the part of speech of each word
-			tlonwords = RiTa.tokenize(thetlontext); //separate the sentence into words
-			for (var y = 0; y < tlonwords.length; y++){
-				theRitaTextArray.push([tlonwords[y], ritatestPOS[y]]); //populate the array with arrays made of each word and its part of speech
+function tloone(){
+	ritatestPOS = RiTa.getPosTags(thetlontext); //analize each sentence and indicate the part of speech of each word
+	tlonwords = RiTa.tokenize(thetlontext); //separate the sentence into words
+	for (var y = 0; y < tlonwords.length; y++){
+		theRitaTextArray.push([tlonwords[y], ritatestPOS[y]]); //populate the array with arrays made of each word and its part of speech
+		}
+	//console.log(theRitaTextArray);
+	for (var x = 0; x < theRitaTextArray.length; x++){
+		if (theRitaTextArray[x][1] == "nn" || theRitaTextArray[x][1] == "nns" || theRitaTextArray[x][1] == "nnp" || theRitaTextArray[x][1] == "nnps" || theRitaTextArray[x][1] == "prp" || theRitaTextArray[x][1] == "prp$") {
+			currentitem = theRitaTextArray[x][0];
+			textprocess(currentitem,x);
+			nouns.push(currentitem);
 			}
-			//console.log(theRitaTextArray);
-			for (var x = 0; x < theRitaTextArray.length; x++){
-				if (theRitaTextArray[x][1] == "nn" || theRitaTextArray[x][1] == "nns" || theRitaTextArray[x][1] == "nnp" || theRitaTextArray[x][1] == "nnps" || theRitaTextArray[x][1] == "prp" || theRitaTextArray[x][1] == "prp$") {
-					currentitem = theRitaTextArray[x][0];
-					textprocess(currentitem,x);
-					nouns.push(currentitem);
-				}
-			}
-			numRequests = nouns.length;
-		},
-	});
+		}
+		numRequests = nouns.length;
 }
 
-function pressfunc(){
-
-	var btn = document.getElementById("geography");
-	var btwn = document.getElementById("history");
-	var btrn = document.getElementById("language");
-
-	btn.onclick = function () {
-		//console.log('Hi, loading geography');
-		resetGlobals();
-		key = 'geography';
-		getAPItexts(key);
-	};
-
-	btwn.onclick = function () {
-		//console.log('Hi, loading history');
-		resetGlobals();
-		key = 'history';
-		getAPItexts(key);
-	};
-
-	btrn.onclick = function () {
-		//console.log('Hi, loading language');
-		resetGlobals();
-		key = 'language';
-		getAPItexts(key);
-	};
+function myFunction() {
+    thetlontext = "";
+    thetlontextor="";
+    resetGlobals();
+    var x = document.getElementById("translator");
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        thetlontextor += x.elements[i].value;
+    }
+    thetlontext = thetlontextor;
+    console.log(thetlontext);
+    tloone();
+    document.getElementById("tlonizedeng").innerHTML = "Tlönized English:";
+    document.getElementById("demo").innerHTML = "Tlönating...";
 }
 
 function resetGlobals(){
+	theRitaTextArray = [];
+	dtplusPOSArray = [];
+	defs = [];
+	newTextArrays = [];
+	termAndDef = [];
+	nouns = [];
 	apiTermResponses = [];
-	thetlontext = 'Grabbing original text...';
 	finaltext = 'Tlöning';
 	randomnumber = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
 }

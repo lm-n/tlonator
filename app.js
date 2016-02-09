@@ -21,9 +21,9 @@ app.use(function(req, res, next) {
 DATABASE Configuration
 ----------*/
 var CLOUDANT_USERNAME="lmn297";
-var CLOUDANT_DATABASE="tlontexts";
-var CLOUDANT_KEY="tiaegantiedideethedoings";
-var CLOUDANT_PASSWORD="26991b75193f6bd5f2b10de1fe04d674eb8b0162";
+var CLOUDANT_DATABASE="tlonator";
+var CLOUDANT_KEY="ndhertspeadereargentsins";
+var CLOUDANT_PASSWORD="d3f51c2467336e080636299a6569f3d4031717df";
 
 var CLOUDANT_URL = "https://" + CLOUDANT_USERNAME + ".cloudant.com/" + CLOUDANT_DATABASE;
 
