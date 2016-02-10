@@ -18,7 +18,7 @@ var termAndDef = [];
 var nouns = [];
 var thetlontextor = "";
 
-function saveRecord(postEntry){
+/*function saveRecord(postEntry){
 		postEntry.namespace = window.key;
 	console.log("Trying to Post");
 	$.ajax({
@@ -35,7 +35,7 @@ function saveRecord(postEntry){
 			document.getElementById("demo").innerHTML = finaltext;
 		}
 	});
-}
+}*/
 
 function replacef(termAndDef){
 	finaltext = thetlontext;
@@ -44,17 +44,18 @@ function replacef(termAndDef){
 		var def = termAndDef[i][1];
 		finaltext = finaltext.replace(noun, def);
 	}
+	//console.log(finaltext);
 
 	finaltext = finaltext.replace(/\s\s/g,' ');
-	var postEntry = {
-			textor: $(thetlontextor),
-			tlonated: $(finaltext),
-			created_at: new Date()
-		};
+	//var postEntry = {
+			//textor: $(thetlontextor),
+			//tlonated: $(finaltext),
+			//created_at: new Date()
+		//};
 	//saveRecord(postEntry);
 	document.getElementById("demo").innerHTML = finaltext;
 	finaltextIsReady = true;
-	console.log(finaltext);
+	//console.log(finaltext);
 }
 
 function textprocess(term){
@@ -106,6 +107,7 @@ function textprocess(term){
 			termAndDef.push([term, noundefinition]);
 
 			if (termAndDef.length == numRequests){
+				//console.log('up to term and def');
 				//console.log(termAndDef);
 				replacef(termAndDef);
 			}
@@ -140,7 +142,7 @@ function myFunction() {
         thetlontextor += x.elements[i].value;
     }
     thetlontext = thetlontextor;
-    console.log(thetlontext);
+    //console.log(thetlontext);
     tloone();
     document.getElementById("tlonizedeng").innerHTML = "Tlönized English:";
     document.getElementById("demo").innerHTML = "Tlönating...";
