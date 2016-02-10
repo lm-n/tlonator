@@ -1,4 +1,4 @@
-/*jshint browser:true, -W100:true, evil:true */
+//*jshint browser:true, -W100:true, evil:true */
 
 (function(window, undefined) {
 
