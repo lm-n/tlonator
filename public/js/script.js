@@ -141,7 +141,7 @@ function myFunction() {
     for (i = 0; i < x.length ;i++) {
         thetlontextor += x.elements[i].value;
     }
-    thetlontext = thetlontextor;
+    thetlontext = thetlontextor.replace(/[’]/g,"\'");
     //console.log(thetlontext);
     tloone();
     document.getElementById("tlonizedeng").innerHTML = "Tlönized English:";
