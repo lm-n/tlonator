@@ -17,69 +17,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-/* ---------
-DATABASE Configuration
-----------*/
-var CLOUDANT_USERNAME="lmn297";
-var CLOUDANT_DATABASE="tlonator";
-var CLOUDANT_KEY="ndhertspeadereargentsins";
-var CLOUDANT_PASSWORD="d3f51c2467336e080636299a6569f3d4031717df";
-
-var CLOUDANT_URL = "https://" + CLOUDANT_USERNAME + ".cloudant.com/" + CLOUDANT_DATABASE;
-
 /* ----
 ROUTES
 -----*/
 app.get("/", function (request, response) {
 	console.log("In main route");
 	response.render('index', {title: "Tlon"});
-});
-
-app.post("/save", function (request, response) {
-	console.log("Making a post!");
-	Request.post({
-		url: CLOUDANT_URL,
-		auth: {
-			user: CLOUDANT_KEY,
-			pass: CLOUDANT_PASSWORD
-		},
-		json: true,
-		body: request.body
-	},
-	function (err, res, body) {
-		if (res.statusCode == 201){
-			console.log('Doc was saved!');
-			response.json(body);
-		}
-		else{
-			console.log('Error: '+ res.statusCode);
-			console.log(body);
-		}
-	});
-});
-
-app.get("/api/:key" , function (request, response) {
-	var theNamespace = request.params.key;
-	console.log('Making a db request for namespace ' + theNamespace);
-	Request.get({
-		url: CLOUDANT_URL+"/_all_docs?include_docs=true",
-		auth: {
-			user: CLOUDANT_KEY,
-			pass: CLOUDANT_PASSWORD
-		},
-		json: true
-	}, function (err, res, body){
-		var theData = body.rows;
-		if (theData){
-			var filteredData = theData.filter(function (d) {
-				return d.doc.namespace == request.params.key;
-			});
-			response.json(filteredData);
-		}
-		else{
-			response.json({noData:true});
-		}
-	});
 });
 
 app.get("/dict/:term" , function (request, response) {

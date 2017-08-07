@@ -18,24 +18,6 @@ var termAndDef = [];
 var nouns = [];
 var thetlontextor = "";
 
-/*function saveRecord(postEntry){
-		postEntry.namespace = window.key;
-	console.log("Trying to Post");
-	$.ajax({
-		url: "/save",
-		contentType: "application/json",
-		type: "POST",
-		data: JSON.stringify(postEntry),
-		error: function (resp) {
-			console.log(resp);
-			document.getElementById("demo").innerHTML = 'errr';
-		},
-		success: function (resp) {
-			console.log(resp);
-			document.getElementById("demo").innerHTML = finaltext;
-		}
-	});
-}*/
 
 function replacef(termAndDef){
 	finaltext = thetlontext;
