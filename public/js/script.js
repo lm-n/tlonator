@@ -141,3 +141,11 @@ function resetGlobals(){
 	finaltext = 'Tlöning';
 	randomnumber = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
 }
+
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        myFunction();
+    }
+});
+
+

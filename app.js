@@ -40,11 +40,6 @@ app.get("/dict/:term" , function (request, response) {
 	});
 });
 
-app.get("/:key", function (request, response) {
-	console.log("In key...");
-	response.render('notes',{title: "Tlon", key: request.params.key});
-});
-
 app.get("*", function(request,response){
 	response.send("Sorry, nothing to see here.");
 });
